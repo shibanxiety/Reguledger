@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ReguLedger – India Regulatory & Amendment Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--nv:#142B45;--nv2:#203B56;--ac:#16866E;--lt:#E5EFF0;--bg:#F5F7FA;--cd:#fff;--tx:#263545;--t2:#718096;--bd:#E4E9EF;--wn:#B7791F;--er:#C24141;--wnb:#fbf1de;--erb:#f8e4e4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--nv:#9fc0e4;--nv2:#b7d0ec;--ac:#4fc4a8;--lt:#1d3a3f;--bg:#0f1720;--cd:#17212c;--tx:#dbe3ec;--t2:#93a1b3;--bd:#2a3846;--wnb:#3a2f14;--erb:#3d2222}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.55 Inter,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
+.w{max-width:1200px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--cd);border-bottom:1px solid var(--bd);padding-top:env(safe-area-inset-top,0px)}
+.hb{height:68px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:18px;color:var(--nv);text-decoration:none!important}
+nav{display:flex;gap:4px;margin:0 auto}
+nav a,.rt a{color:var(--tx);padding:8px 12px;border-radius:6px;font-weight:500}
+nav a:hover,.rt a:hover{background:var(--lt);text-decoration:none}nav a.on{color:var(--ac);box-shadow:inset 0 -2px var(--ac);border-radius:0}
+.rt{display:flex;gap:4px}.rt .ad{color:var(--t2);font-size:12px}
+#mb{display:none;background:none;border:1px solid var(--bd);color:var(--tx);border-radius:6px;padding:6px 10px;margin-left:auto;font-size:16px}
+.hero{background:var(--cd);border-bottom:1px solid var(--bd);padding:56px 0 44px;text-align:center}
+.eb{font-size:12px;letter-spacing:.1em;color:var(--ac);font-weight:600}
+h1{font-size:46px;line-height:1.12;margin:10px 0 12px;color:var(--nv);font-weight:600;letter-spacing:-.02em}
+h2{font-size:24px;margin:0 0 4px;color:var(--nv);font-weight:600}h3{margin:0}
+.sub{color:var(--t2);max-width:640px;margin:0 auto 22px;font-size:15px}
+.sb{display:flex;max-width:700px;margin:0 auto;border:1px solid var(--bd);border-radius:10px;background:var(--cd);overflow:hidden;box-shadow:0 1px 2px rgba(20,43,69,.06)}
+.sb:focus-within{border-color:var(--ac);box-shadow:0 0 0 3px var(--lt)}
+.sb input{flex:1;border:0;padding:15px 16px;font:15px Inter,sans-serif;background:transparent;color:var(--tx);outline:0;min-width:0}
+.sb button{border:0;background:var(--nv);color:#fff;padding:0 22px;font:500 14px Inter,sans-serif;cursor:pointer}
+.sb .x{background:none;color:var(--t2);padding:0 10px;font-size:18px}
+.pop{margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--t2);align-items:center}
+.chip{border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:99px;padding:3px 11px;font:13px Inter,sans-serif;cursor:pointer}
+.chip:hover{border-color:var(--ac);color:var(--ac)}
+section.s{padding:40px 0}.sh{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px;gap:10px;flex-wrap:wrap}.sh p{margin:0;color:var(--t2)}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:16px;transition:border-color .18s}
+a.card{display:block;color:var(--tx);text-decoration:none}a.card:hover{border-color:var(--ac);text-decoration:none}
+.card svg{width:22px;height:22px;stroke:var(--ac);fill:none;stroke-width:1.6;margin-bottom:8px}
+.card h3{font-size:16px;font-weight:600;color:var(--nv)}.card p{margin:4px 0 8px;color:var(--t2);font-size:13px}
+.lnk{font-weight:500;font-size:13px;color:var(--ac)}
+.doc{display:block;background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.doc h3{font-size:16px;font-weight:600;margin:8px 0 4px}.doc h3 a{color:var(--nv)}
+.meta{font-size:12.5px;color:var(--t2);display:flex;flex-wrap:wrap;gap:4px 12px}.meta b{color:var(--tx);font-weight:500}
+.doc p{margin:6px 0 8px;color:var(--tx)}
+.b{display:inline-block;font-size:11.5px;font-weight:600;border-radius:4px;padding:2px 8px;background:var(--lt);color:var(--ac);margin-right:6px}
+.b.t{background:var(--bg);color:var(--t2);border:1px solid var(--bd)}.b.w{background:var(--wnb);color:var(--wn)}.b.e{background:var(--erb);color:var(--er)}
+.na{color:var(--t2);font-style:italic}
+mark{background:#fde9a8;color:#222;border-radius:2px}
+.lay{display:grid;grid-template-columns:270px 1fr;gap:24px;align-items:start}
+aside.f{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:6px 16px}
+aside.f details{border-bottom:1px solid var(--bd);padding:10px 0}aside.f details:last-child{border:0}
+aside.f summary{font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;color:var(--nv)}
+aside.f label{display:flex;gap:8px;align-items:center;padding:3px 0;font-size:13.5px;cursor:pointer}
+input[type=date],select,.in{border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:6px;padding:8px 10px;font:14px Inter,sans-serif;width:100%}
+.ctl{display:flex;gap:10px;margin-bottom:12px}.ctl input{flex:1}.ctl select{width:auto}
+.btn{border:1px solid var(--bd);background:var(--cd);color:var(--tx);border-radius:6px;padding:8px 14px;font:500 13px Inter,sans-serif;cursor:pointer}
+.btn.p{background:var(--nv);color:#fff;border-color:var(--nv)}.btn.a{background:var(--ac);color:#fff;border-color:var(--ac)}.btn:hover{border-color:var(--ac)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.pg{display:flex;gap:6px;justify-content:center;margin:16px 0}.pg .btn.on{background:var(--nv);color:#fff}
+.empty{text-align:center;color:var(--t2);padding:44px 16px;background:var(--cd);border:1px dashed var(--bd);border-radius:10px}
+#ft{display:none}
+.bc{font-size:13px;color:var(--t2);margin:20px 0 12px}
+.dl{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+table.m{width:100%;border-collapse:collapse;background:var(--cd);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+table.m th{text-align:left;width:170px;color:var(--t2);font-weight:500;background:var(--bg)}table.m td,table.m th{padding:9px 14px;border-bottom:1px solid var(--bd)}
+.sc{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.disc{background:var(--cd);border-left:3px solid var(--wn);padding:12px 16px;font-size:13px;color:var(--t2);margin:20px 0;border-radius:4px}
+.demo{background:var(--wnb);color:var(--wn);font-size:12.5px;text-align:center;padding:6px 10px}
+.adm{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:24px 0}
+.adm nav{flex-direction:column;margin:0;background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:8px;gap:2px}
+.adm nav span{color:var(--t2);padding:8px 12px;opacity:.6}.adm nav a{box-shadow:none}
+.adm nav a.on{background:var(--lt)}
+.fm{display:grid;grid-template-columns:1fr 1fr;gap:20px}.fm label{display:block;font-weight:500;font-size:13px;margin-bottom:12px}.fm .in{margin-top:4px}
+.stat{font-size:28px;font-weight:600;color:var(--nv)}
+footer{background:var(--nv);color:#cfdbe8;padding:36px 0 24px;margin-top:20px}
+#tg{background:none;border:1px solid var(--bd);color:var(--tx);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:15px}
+:root[data-theme="dark"] footer{background:#0b121a;color:#b9c6d4}:root[data-theme="dark"] footer a{color:#b9c6d4}:root[data-theme="dark"] footer .cp{border-color:#26364a}
+:root[data-theme="dark"] .sb button:not(.x),:root[data-theme="dark"] .btn.p,:root[data-theme="dark"] .pg .btn.on{background:#2b5d8f;border-color:#2b5d8f;color:#fff}
+:root[data-theme="dark"] .btn.a{background:#16866E;border-color:#16866E;color:#fff}:root[data-theme="dark"] mark{background:#6b5a1e;color:#fff}
+footer .gr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}footer h4{margin:0 0 8px;color:#fff;font-size:13px}
+footer a{display:block;color:#cfdbe8;padding:2px 0;font-size:13px}footer p{font-size:13px;margin:8px 0}
+footer .logo{color:#fff}footer .cp{border-top:1px solid #31506f;margin-top:20px;padding-top:12px;font-size:12px}
+@media(max-width:860px){nav,.rt{display:none}#mb{display:block;margin-left:0}#tg{margin-left:auto}header.o nav,header.o .rt{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cd);padding:8px 20px;border-bottom:1px solid var(--bd)}
+h1{font-size:32px}.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}.lay,.dl,.adm,.fm{grid-template-columns:1fr}
+aside.f{display:none}aside.f.show{display:block}#ft{display:inline-block}footer .gr{grid-template-columns:1fr 1fr}.hb{height:60px}.ctl{flex-wrap:wrap}}
+</style></head><body>
+<div class="demo">Records compiled on 7 Nov 2026 from official pages and third-party reports. Check each record’s badge: the official document is always authoritative.</div>
+<header id="hd"><div class="w hb">
+<a class="logo" href="#home"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="16" height="13" rx="2" opacity=".45"/><rect x="6" y="5" width="16" height="13" rx="2" opacity=".7"/><rect x="9" y="1.5" width="15" height="12" rx="2" fill="#16866E" stroke="#16866E"/></svg>ReguLedger</a>
+<nav id="nv"><a href="#updates" data-r="updates">Latest Updates</a><a href="#authorities" data-r="authorities">Authorities</a><a href="#home-cat" data-r="cat">Categories</a><a href="#archive" data-r="archive">Archives</a></nav>
+<div class="rt"><a href="#updates" aria-label="Search">🔍</a><a href="#about">About</a><a class="ad" href="#admin">Admin</a></div>
+<button id="tg" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button><button id="mb" aria-label="Menu">☰</button></div></header>
+<main id="app"></main>
+<footer><div class="w"><div class="gr"><div><a class="logo" href="#home">ReguLedger</a><p>A centralised library of Indian regulatory and accounting updates, connected to their original official sources.</p></div>
+<div><h4>Explore</h4><a href="#updates">Latest updates</a><a data-cat="GST" href="#updates">GST</a><a data-cat="Income Tax" href="#updates">Income Tax</a><a data-cat="Corporate Law" href="#updates">Corporate Law</a><a data-cat="Accounting" href="#updates">Accounting Standards</a></div>
+<div><h4>Authorities</h4><a href="#authority-cbic">CBIC</a><a href="#authority-cbdt">CBDT</a><a href="#authority-mca">MCA</a><a href="#authority-icai">ICAI</a><a href="#authority-rbi">RBI</a><a href="#authority-sebi">SEBI</a></div>
+<div><h4>Information</h4><a href="#about">About ReguLedger</a><a href="#about">Methodology</a><a href="#about">Source policy</a><a href="#about">Disclaimer</a><a href="#about">Contact</a></div></div>
+<div class="cp">© 2026 ReguLedger. An independent platform, not affiliated with any government ministry or regulatory authority.</div></div></footer>
+<script>
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fd=d=>d?new Date(d+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'<span class="na">Not specified</span>';
+const A=[['cbic','CBIC','Central Board of Indirect Taxes and Customs','Indirect tax administration, including GST and customs.','https://www.cbic.gov.in'],['cbdt','CBDT','Central Board of Direct Taxes','Direct tax policy under the Income-tax Act.','https://incometaxindia.gov.in'],['mca','MCA','Ministry of Corporate Affairs','Companies Act and corporate regulation.','https://www.mca.gov.in'],['icai','ICAI','Institute of Chartered Accountants of India','Accounting standards and professional announcements.','https://www.icai.org'],['rbi','RBI','Reserve Bank of India','Banking and monetary regulation.','https://www.rbi.org.in'],['sebi','SEBI','Securities and Exchange Board of India','Securities market regulation.','https://www.sebi.gov.in'],['epfo','EPFO','Employees’ Provident Fund Organisation','Provident fund and pension schemes.','https://www.epfindia.gov.in'],['esic','ESIC','Employees’ State Insurance Corporation','Employee state insurance scheme.','https://www.esic.gov.in']];
+const C=['GST','Income Tax','Corporate Law','Accounting','Banking','Securities','Labour Laws'],TY=['Notification','Circular','Order','Amendment','Announcement','Exposure Draft','Corrigendum','Other'],S=['Published','Withdrawn','Superseded','Archived'],FY=['2026–27','2025–26','2024–25'];
+const VOK='Official source located and checked';
+const VCT='Official-domain link cited by a third party, not opened';
+let R=[],LOADED=false;
+const by=id=>R.find(r=>r.id===id),au=k=>A.find(a=>a[1]===k||a[0]===k);
+const F0=()=>({q:'',a:[],c:[],ty:[],py:[],fy:[],s:[],ef:'',et:'',un:true,so:'new',pg:1});let F=F0(),AR='cal';
+const PS=5;
+function hl(t){const ts=F.q.toLowerCase().split(/\s+/).filter(Boolean);let h=esc(t);ts.forEach(x=>{const e=esc(x).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');h=h.replace(new RegExp('('+e+')(?![^<]*>)','ig'),'<mark>$1</mark>')});return h}
+const ic='<svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>';
+function sb(v){return `<form class="sb" data-sf role="search"><input id="hq" placeholder="Search notification number, section, rule, authority or keyword..." aria-label="Search" value="${esc(v||'')}"><button type="button" class="x" data-act="clr" aria-label="Clear">×</button><button>Search</button></form>`}
+const st=s=>`<span class="b ${s==='Published'?'':s==='Withdrawn'?'e':'w'}">${s}</span>`;
+function card(r,q){return `<article class="doc"><span class="b">${r.c}</span><span class="b t">${r.ty}</span>${st(r.s)}${r.v===VOK?'':'<span class="b w">'+(r.v===VCT?'Link cited':'Third-party report')+'</span>'}
+<h3><a href="#doc-${r.id}">${q?hl(r.t):esc(r.t)}</a></h3>
+<div class="meta"><span><b>${r.a}</b></span><span>Ref: ${q?hl(r.n):r.n}</span><span>Published ${fd(r.p)}</span>${r.e?`<span>Effective ${fd(r.e)}</span>`:''}</div>
+<p>${q?hl(r.d):esc(r.d)}</p><a class="lnk" href="#doc-${r.id}">View details →</a></article>`}
+const latest=()=>[...R].sort((a,b)=>b.p.localeCompare(a.p));
+function home(){
+ const cats=[['GST','GST','Notifications, circulars and amendments.'],['Income Tax','Income Tax','Tax notifications, circulars and rules.'],['Corporate Law','Corporate Law','Companies Act and MCA updates.'],['Accounting','Accounting Standards','AS, Ind AS and ICAI announcements.']];
+ return `<div class="hero"><div class="w"><div class="eb">INDIA REGULATORY & AMENDMENT LIBRARY</div><h1>Indian regulatory updates.<br>All in one place.</h1>
+ <p class="sub">Discover amendments, notifications, circulars and accounting updates from India’s regulatory authorities through one searchable, source-linked library.</p>${sb()}
+ <div class="pop">Popular:${['GST notifications','Income Tax amendments','MCA circulars','Ind AS updates'].map(x=>`<button class="chip" data-q="${x.split(' ')[0]==='GST'?'GST':x.split(' ')[0]==='Income'?'Income Tax':x.split(' ')[0]}">${x}</button>`).join('')}</div></div></div>
+ <section class="s" id="cat"><div class="w"><div class="sh"><div><h2>Browse by category</h2></div></div><div class="g4">${cats.map(c=>`<a class="card" href="#updates" data-cat="${c[0]}">${ic}<h3>${c[1]}</h3><p>${c[2]}</p><span class="lnk">Browse updates →</span></a>`).join('')}</div></div></section>
+ <section class="s" style="padding-top:0"><div class="w"><div class="sh"><div><h2>Latest Regulatory Updates</h2><p>Recently published documents from official regulatory sources.</p></div><a class="lnk" href="#updates">View all updates →</a></div>${latest().slice(0,6).map(r=>card(r)).join('')}</div></section>
+ <section class="s" style="padding-top:0"><div class="w"><div class="sh"><div><h2>Browse by authority</h2></div></div><div class="g4">${A.map(a=>`<div class="card"><h3>${a[2]}</h3><p>${a[3]}</p><a class="lnk" href="${a[4]}" target="_blank" rel="noopener noreferrer">Official website ↗</a><br><a class="lnk" href="#authority-${a[0]}">Browse indexed documents →</a></div>`).join('')}</div></div></section>
+ <section class="s" style="padding-top:0"><div class="w"><div class="sh"><div><h2>Browse by year</h2></div></div><div class="pop" style="justify-content:flex-start">${[2026,2025,2024,2023].map(y=>`<button class="chip" data-py="${y}">${y}</button>`).join('')}<a class="lnk" href="#archive">View older archives →</a><span>|</span>${FY.map(f=>`<button class="chip" data-fy="${f}">FY ${f}</button>`).join('')}</div></div></section>`}
+function fgroups(){return [['a','Authority',A.map(x=>x[1])],['c','Category',C],['ty','Document type',TY],['py','Publication year',['2026','2025','2024','Earlier']],['fy','Financial year',FY],['s','Document status',S]]}
+function updates(){
+ return `<div class="w" style="padding-top:28px"><h2 style="font-size:30px">All Regulatory Updates</h2><p class="sub" style="margin:4px 0 18px;max-width:none">Browse and search notifications, amendments, circulars and official regulatory documents.</p>
+ <div class="lay"><aside class="f" id="fl">${fgroups().map(g=>`<details open><summary>${g[1]}</summary>${g[2].map(o=>`<label><input type="checkbox" data-f="${g[0]}" value="${o}" ${F[g[0]].includes(o)?'checked':''}>${o}</label>`).join('')}</details>`).join('')}
+ <details open><summary>Effective date</summary><label style="display:block">From<input type="date" id="ef" value="${F.ef}"></label><label style="display:block">To<input type="date" id="et" value="${F.et}"></label><label><input type="checkbox" id="un" ${F.un?'checked':''}>Include unspecified</label></details></aside>
+ <section><div class="ctl"><input class="in" id="sq" placeholder="Search title, number, section, rule, tag..." value="${esc(F.q)}" aria-label="Search updates"><select id="so"><option value="new">Latest publication date</option><option value="old">Oldest publication date</option><option value="az">Alphabetical</option><option value="au">Authority</option></select><button class="btn" id="ft" data-act="ftg">Filters</button><button class="btn" data-act="rs">Reset filters</button></div>
+ <div class="meta" id="cnt" style="margin-bottom:8px"></div><div id="chips" style="margin-bottom:8px"></div><div id="res"></div><div class="pg" id="pgn"></div></section></div></div>`}
+function match(r){const ts=F.q.toLowerCase().split(/\s+/).filter(Boolean),h=[r.t,r.n,r.a,r.c,r.ty,r.d,r.g].join(' ').toLowerCase(),y=+r.p.slice(0,4);
+ if(!ts.every(t=>h.includes(t)))return false;
+ if(F.a.length&&!F.a.includes(r.a))return false;if(F.c.length&&!F.c.includes(r.c))return false;if(F.ty.length&&!F.ty.includes(r.ty))return false;
+ if(F.fy.length&&!F.fy.includes(r.fy))return false;if(F.s.length&&!F.s.includes(r.s))return false;
+ if(F.py.length&&!F.py.some(k=>k==='Earlier'?y<2024:+k===y))return false;
+ if(F.ef||F.et){if(!r.e)return F.un;if(F.ef&&r.e<F.ef)return false;if(F.et&&r.e>F.et)return false}return true}
+function res(){
+ let L=R.filter(match);const so=F.so;
+ L.sort((x,y)=>so==='old'?x.p.localeCompare(y.p):so==='az'?x.t.localeCompare(y.t):so==='au'?x.a.localeCompare(y.a)||y.p.localeCompare(x.p):y.p.localeCompare(x.p));
+ const n=L.length,pages=Math.max(1,Math.ceil(n/PS));F.pg=Math.min(F.pg,pages);
+ $('#cnt').innerHTML=`<b>${n}</b> matching ${n===1?'document':'documents'}`;
+ $('#chips').innerHTML=['a','c','ty','py','fy','s'].flatMap(k=>F[k].map(v=>`<button class="chip" data-rm="${k}|${v}">${v} ×</button>`)).join(' ');
+ $('#res').innerHTML=n?L.slice((F.pg-1)*PS,F.pg*PS).map(r=>card(r,1)).join(''):'<div class="empty">No documents found matching your search. Try another notification number or remove some filters.</div>';
+ $('#pgn').innerHTML=pages>1?Array.from({length:pages},(_,i)=>`<button class="btn ${i+1===F.pg?'on':''}" data-pg="${i+1}">${i+1}</button>`).join(''):'';
+ $('#so').value=so}
+function authorities(){return `<div class="w" style="padding:28px 20px"><h2 style="font-size:30px">Regulatory Authorities</h2><p class="sub" style="margin:4px 0 18px;max-width:none">Explore official Indian regulatory and professional institutions and their indexed documents.</p><div class="g3">${A.map(a=>`<div class="card"><span class="b t">${a[1]}</span><h3 style="margin-top:8px">${a[2]}</h3><p>${a[3]}</p><p>Indexed records: ${R.filter(r=>r.a===a[1]).length}</p><a class="lnk" href="${a[4]}" target="_blank" rel="noopener noreferrer">Official website ↗</a><br><br><a class="btn p" style="display:inline-block" href="#authority-${a[0]}">Browse updates</a></div>`).join('')}</div></div>`}
+function authority(k){const a=au(k);if(!a)return nf();const L=R.filter(r=>r.a===a[1]).sort((x,y)=>y.p.localeCompare(x.p));
+ return `<div class="w"><div class="bc"><a href="#home">Home</a> › <a href="#authorities">Authorities</a> › ${a[1]}</div><h2 style="font-size:30px">${a[2]} (${a[1]})</h2><p class="sub" style="margin:4px 0 12px;max-width:none">${a[3]}</p>
+ <p><a class="btn" href="${a[4]}" target="_blank" rel="noopener noreferrer">Official website ↗</a> <button class="btn a" data-auth="${a[1]}">Search and filter ${a[1]} documents</button></p><h3 style="margin:18px 0 10px">Latest indexed documents</h3>${L.length?L.map(r=>card(r)).join(''):'<div class="empty">No documents indexed yet for this authority.</div>'}</div>`}
+function detail(id){const r=by(id);if(!r)return nf();const au_=au(r.a),inv={amends:'Amended by',clarifies:'Clarified by',supersedes:'Superseded by',corrects:'Corrected by',withdraws:'Withdrawn by',extends:'Extended by',replaces:'Replaced by'};
+ const rel=[...r.rel.map(x=>[x[0][0].toUpperCase()+x[0].slice(1),x[1]]),...R.flatMap(o=>o.rel.filter(x=>x[1]===r.id).map(x=>[inv[x[0]]||x[0],o.id]))];
+ return `<div class="w"><div class="bc"><a href="#home">Home</a> › <a data-cat="${r.c}" href="#updates">${r.c}</a> › ${r.ty}s › ${esc(r.t)}</div>
+ <div class="dl"><div><span class="b">${r.c}</span><span class="b t">${r.ty}</span>${st(r.s)}<h2 style="font-size:30px;margin:10px 0 6px">${esc(r.t)}</h2>
+ <div class="meta" style="margin-bottom:16px"><span><b>${au_[2]}</b></span><span>Ref: ${r.n} <button class="chip" data-copy="${r.n}">Copy</button></span></div>
+ <table class="m"><tr><th>Authority</th><td>${r.a}</td></tr><tr><th>Reference number</th><td>${r.n}</td></tr><tr><th>Publication date</th><td>${fd(r.p)}</td></tr><tr><th>Effective date</th><td>${fd(r.e)}</td></tr><tr><th>Document type</th><td>${r.ty}${r.ty==='Exposure Draft'?' (proposal, not an issued legal instrument)':''}</td></tr><tr><th>Document status</th><td>${r.s}</td></tr><tr><th>Verification status</th><td>${r.v===VOK?'✔ ':'⚠ '}${r.v}${r.lv?', last checked '+fd(r.lv):''}</td></tr></table>
+ <h3 style="margin:22px 0 8px">About this document</h3><p>${esc(r.d)}</p>
+ <h3 style="margin:22px 0 8px">Official source documents</h3>
+ <div class="card sc" style="margin-bottom:10px"><div><b>Original ${r.ty.toLowerCase()}</b><div class="meta">${r.a} · ${r.u?'Official document':'Direct document link not captured yet'}</div></div>${r.u?`<a class="btn a" href="${r.u}" target="_blank" rel="noopener noreferrer">Open official source ↗</a>`:'<button class="btn" disabled>Open official source</button>'}</div>
+ <div class="card sc" style="margin-bottom:10px"><div><b>Official listing page</b><div class="meta">${r.a} · ${r.l?'Official listing page':'Authority portal home page (not the exact listing)'}</div></div><a class="btn a" href="${r.l||au_[4]}" target="_blank" rel="noopener noreferrer">Open official source ↗</a></div>
+ <div class="card sc"><div><b>Parent legislation</b><div class="meta">Not linked yet${r.g?' · Tags: '+esc(r.g):''}</div></div><button class="btn" disabled>Open official source</button></div>
+ ${r.x?`<div class="card sc" style="margin-top:10px"><div><b>Third-party reference</b><div class="meta">Not an official source. Use it only to locate the official document.</div></div><a class="btn" href="${r.x}" target="_blank" rel="noopener noreferrer">Open third-party page ↗</a></div>`:''}<h3 style="margin:22px 0 8px">Related documents</h3>${rel.length?rel.map(x=>`<div class="card" style="margin-bottom:8px"><span class="b">${x[0]}</span><a href="#doc-${x[1]}">${esc(by(x[1]).t)}</a> <span class="meta">${by(x[1]).n}</span></div>`).join(''):'<p class="na">No related documents recorded.</p>'}
+ <div class="disc">ReguLedger is an independent information platform and is not affiliated with any government ministry or regulatory authority. The original official document remains the authoritative source. Users should verify applicable legal provisions before relying on the information.</div>
+ <a class="btn" href="#updates">← Back to results</a></div>
+ <aside class="card"><h3>Source summary</h3><p>Original document: ${r.u?'captured':'<span class="na">not captured</span>'}</p><p>Parent legislation: <span class="na">not linked</span></p><p>Related documents: ${rel.length}</p><p>Last verified: ${fd(r.lv)}</p><button class="btn" data-act="brk">Report broken link</button><p id="bk" class="meta"></p></aside></div></div>`}
+function archive(){const arch=AR==='cal',L=latest(),keys=[...new Set(L.map(r=>arch?r.p.slice(0,4):r.fy))].sort().reverse(),mn=d=>new Date(d+'T00:00:00').toLocaleDateString('en-IN',{month:'long',year:'numeric'});
+ return `<div class="w" style="padding:28px 20px"><h2 style="font-size:30px">Regulatory Archive</h2><p class="sub" style="margin:4px 0 14px;max-width:none">Explore historical regulatory documents and announcements. Withdrawn and superseded records stay accessible.</p>
+ <p><button class="btn ${arch?'p':''}" data-ar="cal">Calendar year</button> <button class="btn ${arch?'':'p'}" data-ar="fy">Financial year</button></p>
+ ${keys.map(k=>{const items=L.filter(r=>(arch?r.p.slice(0,4):r.fy)===k),ms=[...new Set(items.map(r=>mn(r.p)))];return `<h3 style="margin:22px 0 8px;font-size:20px">${arch?k:'FY '+k}</h3>${ms.map(m=>`<div class="meta" style="margin:10px 0 6px"><b>${m}</b></div>${items.filter(r=>mn(r.p)===m).map(r=>card(r)).join('')}`).join('')}`}).join('')}</div>`}
+function adminShell(v,body){const l=[['admin','Overview'],['admin-add','Add document'],['admin-queue','Review queue']];
+ return `<div class="w adm"><nav>${l.map(x=>`<a href="#${x[0]}" class="${v===x[0]?'on':''}">${x[1]}</a>`).join('')}${['All documents','Authorities','Categories','Source registry','Broken links','Activity logs','Settings'].map(x=>`<span>${x}</span>`).join('')}</nav><div>${body}</div></div>`}
+function admin(){const n=R.length,p=R.filter(r=>r.s==='Published').length,u=R.filter(r=>r.v!==VOK).length;
+ return adminShell('admin',`<h2>Overview</h2><p class="meta">Counts below are calculated from the indexed records.</p><div class="g3" style="margin-top:12px">${[['Total records',n],['Published',p],['Drafts',0],['Awaiting verification',u],['Broken source links','–']].map(x=>`<div class="card"><div class="meta">${x[0]}</div><div class="stat">${x[1]}</div></div>`).join('')}</div><p class="meta" style="margin-top:12px">Link health is not tracked in this prototype, and no record’s legal status is changed automatically when a URL fails.</p>`)}
+function adminAdd(){const sel=(l,o)=>`<label>${l}<select class="in" name="${l}">${o.map(x=>`<option>${x}</option>`).join('')}</select></label>`,inp=(l,t='text')=>`<label>${l}<input class="in" type="${t}" name="${l}"></label>`;
+ return adminShell('admin-add',`<h2>Add document</h2><form id="af"><div class="fm"><div><h3 style="margin-bottom:10px">Document information</h3>${inp('Title')}${sel('Authority',A.map(a=>a[1]))}${sel('Category',C)}${sel('Document type',TY)}${inp('Reference number')}${inp('Publication date','date')}${inp('Effective from','date')}${inp('Effective to','date')}<label>Short description<textarea class="in" rows="3" name="Short description"></textarea></label>${inp('Tags')}</div>
+ <div><h3 style="margin-bottom:10px">Source information</h3>${inp('Original official document URL','url')}${inp('Official listing URL','url')}${inp('Parent legislation URL','url')}${sel('Related document',['None',...R.map(r=>r.n)])}${sel('Verification status',[VOK,VNO])}<label>Internal notes<textarea class="in" rows="3"></textarea></label></div></div>
+ <p><button type="button" class="btn" data-act="ad">Save draft</button> <button type="button" class="btn" data-act="ad">Preview</button> <button type="button" class="btn a" data-act="pub">Publish</button></p><p id="am" class="meta" role="status"></p></form>`)}
+function queue(){const q=R.filter(r=>r.v!==VOK);
+ return adminShell('admin-queue',`<h2>Review queue</h2><p class="meta">Automatically discovered documents are never shown as verified until an administrator approves them.</p>${q.length?q.map(r=>`<div class="card sc" style="margin-top:10px"><div><b>${esc(r.t)}</b><div class="meta"><span>${r.a}</span><span>Detected: third-party report</span><span>Status: awaiting review</span></div></div><div><button class="btn a" data-ap="${r.id}">Approve</button> <button class="btn">Reject</button> <button class="btn">Edit</button></div></div>`).join(''):'<div class="empty">The review queue is empty.</div>'}`)}
+function about(){return `<div class="w" style="padding:28px 20px;max-width:760px"><h2 style="font-size:30px">About ReguLedger</h2><p>ReguLedger is a source-linked library of Indian regulatory and accounting documents. Every published record must carry a direct link to its original official document. Publication and effective dates are shown separately, and missing values are shown as “Not specified”, never guessed. Automatically discovered documents are labelled unverified until reviewed.</p><div class="disc">ReguLedger is an independent information platform and is not affiliated with any government ministry or regulatory authority. The original official document remains the authoritative source. Users should verify applicable legal provisions before relying on the information.</div></div>`}
+const nf=()=>'<div class="w"><div class="empty" style="margin-top:30px">Page not found. <a href="#home">Go to the home page</a>.</div></div>';
+function route(){if(!LOADED)return;const h=location.hash.slice(1)||'home';let o,t='ReguLedger';
+ if(h==='home'||h==='home-cat'){o=home();t='ReguLedger – India Regulatory & Amendment Library'}
+ else if(h==='updates'){o=updates();t='All Regulatory Updates – ReguLedger'}
+ else if(h==='authorities'){o=authorities();t='Regulatory Authorities – ReguLedger'}
+ else if(h.startsWith('authority-')){o=authority(h.slice(10));t='Authority – ReguLedger'}
+ else if(h.startsWith('doc-')){o=detail(h.slice(4));const r=by(h.slice(4));t=(r?r.t:'Not found')+' – ReguLedger'}
+ else if(h==='archive'){o=archive();t='Regulatory Archive – ReguLedger'}
+ else if(h==='admin'){o=admin();t='Admin – ReguLedger'}else if(h==='admin-add'){o=adminAdd();t='Add document – ReguLedger'}else if(h==='admin-queue'){o=queue();t='Review queue – ReguLedger'}
+ else if(h==='about'){o=about();t='About – ReguLedger'}else o=nf();
+ $('#app').innerHTML=o;document.title=t;$('#hd').classList.remove('o');
+ $$('#nv a').forEach(a=>a.classList.toggle('on',h.startsWith(a.dataset.r)));
+ if(h==='updates')res();if(h==='home-cat'){const e=$('#cat');e&&e.scrollIntoView()}else window.scrollTo(0,0)}
+function go(h){if(location.hash.slice(1)===h)route();else location.hash=h}
+function setTheme(m){document.documentElement.dataset.theme=m;$('#tg').textContent=m==='dark'?'☀️':'🌙';try{localStorage.setItem('rl-theme',m)}catch(e){}}
+let th='light';try{th=localStorage.getItem('rl-theme')==='dark'?'dark':'light'}catch(e){}
+setTheme(th);
+addEventListener('hashchange',route);
+document.addEventListener('submit',e=>{if(e.target.matches('[data-sf]')){e.preventDefault();F=F0();F.q=$('#hq').value.trim();go('updates')}});
+document.addEventListener('input',e=>{if(e.target.id==='sq'){F.q=e.target.value;F.pg=1;res()}else if(e.target.id==='ef'||e.target.id==='et'){F[e.target.id]=e.target.value;F.pg=1;res()}});
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset.f){const k=t.dataset.f;F[k]=t.checked?[...F[k],t.value]:F[k].filter(x=>x!==t.value);F.pg=1;res()}else if(t.id==='un'){F.un=t.checked;res()}else if(t.id==='so'){F.so=t.value;res()}});
+document.addEventListener('click',e=>{const t=e.target.closest('button,a');if(!t)return;const d=t.dataset;
+ if(t.id==='tg'){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');return}
+ if(t.id==='mb'){$('#hd').classList.toggle('o');return}
+ if(d.cat){F=F0();F.c=[d.cat];go('updates')}
+ else if(d.q){F=F0();F.q=d.q;go('updates')}
+ else if(d.py){F=F0();F.py=[d.py];go('updates')}
+ else if(d.fy){F=F0();F.fy=[d.fy];go('updates')}
+ else if(d.auth){F=F0();F.a=[d.auth];go('updates')}
+ else if(d.rm){const[k,v]=d.rm.split('|');F[k]=F[k].filter(x=>x!==v);F.pg=1;updates&&go('updates');route()}
+ else if(d.pg){F.pg=+d.pg;res()}
+ else if(d.ar){AR=d.ar;route()}
+ else if(d.copy){navigator.clipboard&&navigator.clipboard.writeText(d.copy).catch(()=>{});t.textContent='Copied'}
+ else if(d.ap){t.textContent='Needs database'}
+ else if(d.act==='clr'){$('#hq').value='';$('#hq').focus()}
+ else if(d.act==='rs'){F=F0();route()}
+ else if(d.act==='ftg'){$('#fl').classList.toggle('show')}
+ else if(d.act==='brk'){$('#bk').textContent='Thank you. In a live system this would be logged for review.'}
+ else if(d.act==='ad'){$('#am').textContent='Demonstration only: nothing is saved in this prototype.'}
+ else if(d.act==='pub'){const f=$('#af'),v=n=>f.elements[n].value.trim(),miss=['Title','Reference number','Publication date','Short description'].filter(n=>!v(n)),u=v('Original official document URL');
+  $('#am').textContent=miss.length?'Cannot publish. Missing: '+miss.join(', ')+'.':!/^https:\/\/.+\..+/.test(u)?'Cannot publish. A valid original official document URL (https://) is required.':'Validation passed. Demonstration only: nothing is saved.'}});
+fetch('data/records.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{R=d;LOADED=true;route()}).catch(()=>{$('#app').innerHTML='<div class="w"><div class="empty" style="margin-top:30px">Could not load the records. Please refresh, or try again later.</div></div>'});
+</script></body></html>
